@@ -1,0 +1,39 @@
+﻿@model List<Blog>
+
+        <!-- Main Content-->
+        @foreach(var item in Model)
+        {
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <div class="post-preview">
+                        <a href="/blog/blog?id=@item.Id">
+                            <h2 class="post-title">@item.Name</h2>
+                            <p>Tags: @item.Tags</p>
+                            <h3 class="post-subtitle">
+                                    <p>
+                                    @(item.Text.Length > 50 
+                                        ? item.Text.Substring(0, Math.Min(250, item.Text.Length)) + " ..." 
+                                        : item.Text)
+                                    </p>
+                                
+                            </h3>
+                        </a>
+                        <p class="post-meta">
+                            <a href="/blog/blog?id=@item.Id">
+                                Continue...
+                            </a>
+                        </p>
+                        <p>@item.PublishDate.ToString();</p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                </div>
+            </div>
+        </div>
+        }
+        
+        <!-- Pager-->
+        <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                

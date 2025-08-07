@@ -1,0 +1,35 @@
+@{
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+@model List<Blog>
+    @foreach (var item in Model)
+    {
+  <!-- Illustrations -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h4 class="m-0 font-weight-bold text-primary">@item.Name</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
+                                            src="/img/undraw_posting_photo.svg" alt="...">
+                                    </div>
+                                <h6 class="post-subtitle">
+                                   <p>
+                                    @(item.Text.Length > 50 
+                                        ? item.Text.Substring(0, Math.Min(250, item.Text.Length)) + " ..." 
+                                        : item.Text)
+                                    </p>
+                                </h6>
+                                    <a target="_blank" rel="nofollow" href="/Admin/EditBlog?id=@item.Id">Edit Blog &rarr;</a>
+                                </div>
+                            </div>
+
+    }
+                                    <a href="/Admin/CreateBlog" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                        <span class="text">Create Blog</span>
+                                    </a>
+ 
